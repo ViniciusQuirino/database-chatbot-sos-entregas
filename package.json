@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "test": "cross-env NODE_ENV=test SECRET_KEY=secreta!chave jest --verbose --runInBand",
     "build": "tsc",
-    "start": "node dist/src/server.js"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
