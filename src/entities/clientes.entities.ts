@@ -36,6 +36,9 @@ class Clientes {
 
   @CreateDateColumn()
   datadecriacao: Date;
+
+  @Column({ length: 255, nullable: true })
+  gatilhotoken: string;
 }
 
 export { Clientes };

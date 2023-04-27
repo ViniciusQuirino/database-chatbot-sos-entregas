@@ -4,7 +4,7 @@ import createEntregasController from "../controllers/entregas/createEntregas.con
 const entregasRoutes: Router = Router();
 
 entregasRoutes.post("", createEntregasController);
-entregasRoutes.get("/:id");
-entregasRoutes.patch("/:id");
+// entregasRoutes.get("/:id");
+// entregasRoutes.patch("/:id");
 
 export default entregasRoutes;

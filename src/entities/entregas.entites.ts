@@ -19,6 +19,7 @@ class Entregas {
 
   @Column({ length: 20, nullable: true })
   telefone: string;
+
 }
 
 export { Entregas };

@@ -20,6 +20,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
       entities: [entitiesPath],
     };
   }
+
   return {
     type: "postgres",
     host: process.env.PGHOST,
