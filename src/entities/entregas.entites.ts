@@ -14,12 +14,11 @@ class Entregas {
   @Column({ length: 500, nullable: true })
   obs: string;
 
-  @Column({ length: 50, nullable: true })
-  formadepagamento: string;
-
   @Column({ length: 20, nullable: true })
   telefone: string;
 
+  @Column({ length: 15, nullable: true })
+  formadepagamento: string;
 }
 
 export { Entregas };

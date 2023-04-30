@@ -1,8 +1,7 @@
-// import apiFood from "../../api";
 import AppDataSource from "../../data-source";
 import { Entregas } from "../../entities/entregas.entites";
 
-const createEntregasService = async (body: any) => {
+const createEntregaService = async (body: any) => {
   const data = {
     id: "301",
     status: "open",
@@ -28,7 +27,7 @@ const createEntregasService = async (body: any) => {
     .catch((err) => console.log(err));
 
   const dados = {
-    telefone: "5514998536591",
+    telefone: "5514998536591@c.us",
     entregaidfood: response.uid,
   };
 
@@ -66,4 +65,4 @@ const createEntregasService = async (body: any) => {
   return entregas;
 };
 
-export default createEntregasService;
+export default createEntregaService;

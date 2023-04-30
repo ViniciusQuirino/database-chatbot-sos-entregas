@@ -7,7 +7,7 @@ const updatePassoService = async (params: string, body: any) => {
     AppDataSource.getRepository(Etapas);
 
   const etapas: Etapas = await etapasRepositorio.findOneBy({
-    telefone: body.telefone,
+    telefone: params,
   });
 
   const novaEtapa: Etapas = await etapasRepositorio.save({

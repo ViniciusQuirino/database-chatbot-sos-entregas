@@ -1,10 +1,10 @@
 import { Router } from "express";
-import createEntregasController from "../controllers/entregas/createEntregas.controller";
+import createEntregaController from "../controllers/entregas/createEntregas.controller";
+import updateEntregaController from "../controllers/entregas/updateEntrega.controller";
 
 const entregasRoutes: Router = Router();
 
-entregasRoutes.post("", createEntregasController);
-// entregasRoutes.get("/:id");
-// entregasRoutes.patch("/:id");
+entregasRoutes.post("", createEntregaController);
+entregasRoutes.patch("", updateEntregaController);
 
 export default entregasRoutes;
