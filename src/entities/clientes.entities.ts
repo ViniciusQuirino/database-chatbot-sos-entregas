@@ -33,12 +33,6 @@ class Clientes {
 
   @Column({ length: 20, nullable: true })
   telefonecinco: string;
-
-  @CreateDateColumn()
-  datadecriacao: Date;
-
-  @Column({ length: 255, nullable: true })
-  gatilhotoken: string;
 }
 
 export { Clientes };

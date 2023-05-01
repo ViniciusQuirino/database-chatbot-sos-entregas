@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
 
 @Entity("entregas")
 class Entregas {
@@ -19,6 +19,27 @@ class Entregas {
 
   @Column({ length: 15, nullable: true })
   formadepagamento: string;
+
+  @Column({ length: 15, nullable: true })
+  data: string;
+
+  @BeforeInsert()
+  dataDeCriacao() {
+    const dataDeHoje = new Date();
+    const dia = dataDeHoje.getDate();
+    const mes = dataDeHoje.getMonth();
+    const diaString = dia.toString();
+    const mesString = mes.toString();
+    if (diaString.length == 1 && mesString.length == 1) {
+      this.data = `0${dia}/0${mes + 1}`;
+    } else if (diaString.length == 2 && mesString.length == 1) {
+      this.data = `${dia}/0${mes + 1}`;
+    } else if (diaString.length == 1 && mesString.length == 2) {
+      this.data = `0${dia}/${mes + 1}`;
+    } else if (diaString.length == 2 && mesString.length == 2) {
+      this.data = `${dia}/${mes + 1}`;
+    }
+  }
 }
 
 export { Entregas };

@@ -7,7 +7,7 @@ const listClientService = async () => {
     AppDataSource.getRepository(Clientes);
 
   const cliente: Clientes[] = await clienteRepositorio
-    .createQueryBuilder("contact")
+    .createQueryBuilder("clientes")
     .getMany();
 
   return cliente;
