@@ -11,8 +11,8 @@ class Etapas {
   @Column({ length: 5 })
   etapa: string;
 
-  @Column({ length: 5, nullable: true })
-  etapadois: string;
+  @Column({ default: true })
+  ativado: boolean;
 
   @Column({ length: 10, nullable: true })
   codigo: string;
