@@ -1,32 +1,15 @@
 import AppDataSource from "../../data-source";
 import { Webhook } from "../../entities/webhook.entities";
 
-const listenWebhookService = async (body: any) => {
+
+const createWebhookService = async (body: any) => {
   const webhookRepositorio = AppDataSource.getRepository(Webhook);
 
-  const webhook: Webhook = await webhookRepositorio.findOneBy({
-    entregaidfood: body.uid,
-  });
+  const webhook = webhookRepositorio.create(body);
 
-  const dados = {
-    number: webhook.telefone,
-    message: `O motoboy aceitou o pedido: ${webhook.iddatabase}
-     
-Endereço: ${webhook.entrega}
+  await webhookRepositorio.save(webhook);
 
-Em alguns minutos ele realizará a coleta. Obrigado! 😁`,
-  };
-
-  await fetch("https://enviar-mensagem.up.railway.app/send-message", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dados),
-  })
-    .then((res) => res.json())
-    .then((res) => res)
-    .catch((err) => console.log(err));
+  return webhook;
 };
 
-export default listenWebhookService;
+export default createWebhookService;

@@ -1,15 +1,14 @@
 import { Router } from "express";
-import listenWebhookController from "../controllers/webhook/createWebhook.controller";
-import listEntregasController from "../controllers/entregas/listEntregas.controller";
-import createDataController from "../controllers/webhook/createData.controller";
-import deleteEntregasController from "../controllers/entregas/deleteEntregas.controller";
-
+import listenWebhookController from "../controllers/webhook/listenWebhook.controller";
+import listWebhookController from "../controllers/webhook/listWebhook.controller";
+import createWebhookController from "../controllers/webhook/createWebhook.controller";
+import deleteWebhookController from "../controllers/webhook/deleteWebhook.controller";
 
 const webHook: Router = Router();
 
 webHook.post("", listenWebhookController);
-webHook.get("", listEntregasController);
-webHook.post("/create", createDataController);
-webHook.delete("", deleteEntregasController);
+webHook.get("", listWebhookController);
+webHook.post("/create", createWebhookController);
+webHook.delete("", deleteWebhookController);
 
 export default webHook;

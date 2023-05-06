@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import AppDataSource from "../../data-source";
 import { Webhook } from "../../entities/webhook.entities";
 
-const deleteEntregasService = async (): Promise<void> => {
+const deleteWebhookService = async (): Promise<void> => {
   const webhookRepositorio: Repository<Webhook> =
     AppDataSource.getRepository(Webhook);
 
@@ -13,4 +13,4 @@ const deleteEntregasService = async (): Promise<void> => {
     .execute();
 };
 
-export default deleteEntregasService;
+export default deleteWebhookService;
