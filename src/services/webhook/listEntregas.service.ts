@@ -7,7 +7,7 @@ const listEntregasService = async () => {
     AppDataSource.getRepository(Webhook);
 
   const webhook: Webhook[] = await webhookRepositorio
-    .createQueryBuilder("entregas")
+    .createQueryBuilder("webhook")
     .getMany();
 
   return webhook;
