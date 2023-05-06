@@ -2,11 +2,9 @@ import { Request, Response } from "express";
 import listEntregasServices from "../../services/entregas/listEntrega.service";
 
 const listEntregasController = async (req: Request, res: Response) => {
-  if (req.params.data) {
-    const response = await listEntregasServices(req.params.data);
+  const response = await listEntregasServices(req.params.data);
 
-    return res.status(200).json(response);
-  }
+  return res.status(200).json(response);
 };
 
 export default listEntregasController;
