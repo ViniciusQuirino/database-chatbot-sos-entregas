@@ -17,7 +17,7 @@ Endereço: ${webhook.entrega}
 Em alguns minutos ele realizará a coleta. Obrigado! 😁`,
   };
 
-  await fetch("https://enviar-mensagem.up.railway.app/send-message", {
+  await fetch("https://chatbot-sos.up.railway.app/send-message", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
