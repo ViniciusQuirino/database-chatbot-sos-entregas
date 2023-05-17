@@ -69,7 +69,7 @@ const listHorasEntregas = async () => {
 Obrigado e tenha um ótimo dia! 😄`,
       };
 
-      await fetch("http://localhost:7002/send-message", {
+      await fetch("https://chatbot-sos.up.railway.app/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
