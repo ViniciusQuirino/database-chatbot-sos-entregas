@@ -1,9 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BeforeInsert,
+  PrimaryColumn,
+  Repository,
+} from "typeorm";
+import AppDataSource from "../data-source";
 
 @Entity("entregas")
 class Entregas {
-  @PrimaryGeneratedColumn("increment")
-  id: string;
+  // @PrimaryGeneratedColumn("increment")
+  // id: string;
+
+  @PrimaryColumn()
+  id: number;
 
   @Column({ length: 255, nullable: true })
   tokencoleta: string;
@@ -17,27 +28,39 @@ class Entregas {
   @Column({ length: 20, nullable: true })
   telefone: string;
 
-  @Column({ length: 15, nullable: true })
+  @Column({ length: 15, nullable: true, default: "" })
   formadepagamento: string;
 
-  @Column({ length: 15, nullable: true })
+  @Column({ length: 50, nullable: true })
   data: string;
 
+  @Column({ default: false })
+  msgwhats: boolean;
+
+  @Column({ length: 10, nullable: true, default:"" })
+  codigo: string;
+
   @BeforeInsert()
-  dataDeCriacao() {
+  async antesDeInserir() {
     const dataDeHoje = new Date();
-    const dia = dataDeHoje.getDate();
-    const mes = dataDeHoje.getMonth();
-    const diaString = dia.toString();
-    const mesString = mes.toString();
-    if (diaString.length == 1 && mesString.length == 1) {
-      this.data = `0${dia}/0${mes + 1}`;
-    } else if (diaString.length == 2 && mesString.length == 1) {
-      this.data = `${dia}/0${mes + 1}`;
-    } else if (diaString.length == 1 && mesString.length == 2) {
-      this.data = `0${dia}/${mes + 1}`;
-    } else if (diaString.length == 2 && mesString.length == 2) {
-      this.data = `${dia}/${mes + 1}`;
+
+    const formatar = dataDeHoje.toLocaleString("pt-BR", { timeZone: "UTC" });
+
+    this.data = formatar;
+
+    const entregasRepositorio: Repository<Entregas> =
+      AppDataSource.getRepository(Entregas);
+
+    const ultimaEntrega = await entregasRepositorio
+      .createQueryBuilder("entregas")
+      .orderBy("entregas.id", "DESC")
+      .limit(1)
+      .getOne();
+
+    if (!ultimaEntrega) {
+      this.id = 1;
+    } else if (ultimaEntrega) {
+      this.id = ultimaEntrega.id + 1;
     }
   }
 }

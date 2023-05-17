@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 import listenWebhookService from "../../services/webhook/listenWebhook.service";
 
-
-
 const listenWebhookController = async (req: Request, res: Response) => {
-  console.log(req.body.status);
   if (req.body.status == "accepted") {
     await listenWebhookService(req.body);
   }
