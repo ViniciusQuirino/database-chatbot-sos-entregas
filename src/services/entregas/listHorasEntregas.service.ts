@@ -61,7 +61,7 @@ const listHorasEntregas = async () => {
 
     const agora = dataDeHoje.getTime();
 
-    if (agora - 1800000 <= timesDB) {
+    if (agora - 1800000 >= timesDB) {
       const data = {
         number: telefone,
         message: `Lamentamos, mas devido à falta de resposta ou interação, este atendimento foi encerrado. Caso precise realizar um pedido de entrega futuramente por favor, entre em contato novamente. Estaremos aqui prontamente para atendê-lo.
@@ -107,7 +107,7 @@ Obrigado e tenha um ótimo dia! 😄`,
 
     const agora = dataDeHoje.getTime();
 
-    if (agora - 1800000 <= timesDB) {
+    if (agora - 1800000 >= timesDB) {
       await entregaRepositorio.save({
         ...dados,
         msgwhats: true,
