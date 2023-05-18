@@ -5,7 +5,7 @@ class Etapas {
   @PrimaryGeneratedColumn("increment")
   id: string;
 
-  @Column({ length: 20, unique: true })
+  @Column({ length: 20 })
   telefone: string;
 
   @Column({ length: 5 })
