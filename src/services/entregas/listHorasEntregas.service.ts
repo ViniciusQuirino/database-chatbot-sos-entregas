@@ -67,7 +67,7 @@ const listHorasEntregas = async () => {
         message: `Lamentamos, mas devido à falta de resposta ou interação, este atendimento foi encerrado. Caso precise realizar um pedido de entrega futuramente por favor, entre em contato novamente. Estaremos aqui prontamente para atendê-lo.
 
 Obrigado e até a próxima! 😃`,
-      };
+      }
 
       await fetch("https://chatbot-sos.up.railway.app/send-message", {
         method: "POST",
