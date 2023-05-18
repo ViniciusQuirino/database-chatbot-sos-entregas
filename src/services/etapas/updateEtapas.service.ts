@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 import { Etapas } from "../../entities/etapas.entites";
 import AppDataSource from "../../data-source";
+import { AppError } from "../../errors/appError";
 
 const updatePassoService = async (params: string, body: any) => {
   const etapasRepositorio: Repository<Etapas> =
@@ -13,12 +14,16 @@ const updatePassoService = async (params: string, body: any) => {
     .limit(1)
     .getOne();
 
-  const novaEtapa: Etapas = await etapasRepositorio.save({
-    ...etapas,
-    ...body,
-  });
+  if (etapas) {
+    const novaEtapa: Etapas = await etapasRepositorio.save({
+      ...etapas,
+      ...body,
+    });
 
-  return novaEtapa;
+    return novaEtapa;
+  } else {
+    throw new AppError("Não existe esse numero no banco de dados", 400);
+  }
 };
 
 export default updatePassoService;
