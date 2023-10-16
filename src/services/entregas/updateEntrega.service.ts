@@ -28,6 +28,7 @@ const updateEntregaService = async (body) => {
   } else if (body.b == "b") {
     const entrega: Entregas = await entregasRepositorio.save({
       ...ultimaEntrega,
+      ...body,
       obs: `${ultimaEntrega.obs} - ${body.obs}`,
       data: formatar,
     });
